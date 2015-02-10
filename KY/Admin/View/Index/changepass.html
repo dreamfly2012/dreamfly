@@ -1,0 +1,40 @@
+<include file="Common/header" title="登陆用户密码修改" keywords="用户中心" />
+<div id="mws-wrapper">     
+    <include file="Common/sidebar" />
+    <div id="mws-container" class="clearfix">
+      <div class="container"> 
+        <div class="mws-panel grid_8">
+          <div class="mws-panel-header">
+              <span class="mws-i-24 i-list">修改密码</span>
+          </div>
+          <div class="mws-panel-body">
+            <form class="mws-form" action="{:U('Admin/changepass')}" method="post">
+                <div class="mws-form-inline">
+                    <div class="mws-form-row">
+                      <label>原密码:</label>
+                      <div class="mws-form-item small">
+                        <input type="password" class="mws-textinput" name="oldpass" value="" />
+                      </div>
+                      <label>新密码:</label>
+                      <div class="mws-form-item small">
+                        <input type="password" class="mws-textinput" name="password" value="" />
+                      </div>
+                      <label>确认新密码:</label>
+                      <div class="mws-form-item small">
+                        <input type="password" class="mws-textinput" name="password2" value="" />
+                      </div>
+                    </div>
+                </div>
+
+                <div class="mws-button-row">
+                  <input type="submit" value="Submit" class="mws-button green">
+                </div>
+            </form>
+          </div>      
+        </div>
+      </div>
+      <include file="Common/footer" />
+    </div>
+  </div>
+</body>
+</html>

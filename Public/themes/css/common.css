@@ -1,0 +1,18 @@
+.snapshot{color:red;float:right;}
+.batchedit{color:yellow;padding-left: 10px;}
+.popup{position: fixed;display:none;}
+.close{float:right; color:grey;}
+.edit_table{border:1px solid #000;width: 100%}
+.edit_table tr th{border:1px solid #000;width: 33%}
+.edit_table tr td{border:1px solid #000;width: 33%}
+.set_fixed_price td{padding-top: 60px;line-height: 20px;}
+.set_expression_price td{padding-top: 5px;line-height: 20px;}
+
+
+
+.skus_table{width: 80%;border:1px solid #000;padding-left: 50px;}
+.skus_table tr th{border:1px solid #000; text-align: center;}
+.skus_table tr td{border:1px solid #000; text-align: center;}
+.skus_table tr td input{width: 100%;}
+
+

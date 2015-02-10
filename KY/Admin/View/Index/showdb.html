@@ -1,0 +1,30 @@
+<div class="container">
+	<form action="javascript:;" method="post" name="sqldataform" id="sqldataform">
+		<select name="table">
+			<option selected="selected" value="article">文章</option>
+		</select>
+
+		<select name="field" id="field">
+			<foreach name="Fields" item="vo">
+				<option value="{$vo.Field}">{$vo.Field}</option>
+			</foreach>
+		</select>
+		<input type="submit" class="sqldata" value="确认" />
+	</form>
+</div>
+
+
+<script type="text/javascript">
+ 	$(".sqldata").on('click',function(){
+		$.ajax({  
+			type: "POST",  
+			url: "getData",  
+			data: $('#sqldataform').serialize(),  
+			success: function(data) {
+				var data = $.parseJSON(data);
+				var field = $("#field").val();
+				CKEDITOR.instances['contenteditor'].setData(data[0].field);
+			}
+		});
+	});
+</script>

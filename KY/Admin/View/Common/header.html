@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <include file="Common/css_js" />
+  <title>[title]</title>
+  <meta name="keywords" content="[keywords]" />
+</head>
+<body>
+<div id="mws-header" class="clearfix">
+	<div id="mws-logo-container">
+    	<div id="mws-logo-wrap">
+        	<img src="__PUBLIC__/themes/images/mws-logo.png" alt="mws admin">
+		  </div>
+    </div>
+    
+    <div id="mws-user-tools" class="clearfix">
+    	<div id="mws-user-info" class="mws-inset">
+        	<php>if(!is_null(session('username'))):</php>
+                <div id="mws-user-photo">
+                
+                </div>
+                <div id="mws-user-functions">
+                    <div id="mws-username">
+                        你好,<php>echo session('username');</php> 
+                    </div>
+                    <ul>
+                    	  <li><a href="{:U('Index/changepass')}">修改密码</a></li>
+                        <li><a href="{:U('Admin/logout')}">退出</a></li>
+                    </ul>
+                </div>
+             <php>else:</php>
+                   <span style="color:#c5d52b;font-size:22px;">你好，请
+                      <a href="{:U('Index/index')}" style="color:#FFFFFF;text-decoration: none;">登陆</a>
+                   </span>
+             <php>endif;</php>
+        </div>
+    </div>
+</div>

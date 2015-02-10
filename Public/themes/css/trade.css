@@ -1,0 +1,4 @@
+.trade_table{width: 100%; border:2px solid black; background-color: #ddd}
+.trade_table th {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #dedede;}
+.trade_table td {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #ffffff;}
+.trade_table td a {padding-left: 10px}

@@ -1,0 +1,108 @@
+<include file="Common/css_js" title="批量修改" keywords="批量修改" />
+<div class="mws-panel grid_8">
+ 	<div class="mws-panel-header">
+     	<span class="mws-i-24 i-list">批量编辑</span>
+     </div>
+     <div class="mws-panel-body">
+     <form class="mws-form" action="{:U('Admin/batchedit_price')}" method="post">
+		<div class="mws-form-block">
+               <table class="mws-table">
+                    <thead>
+                         <tr>
+                              <th style="width:32%">名称</th>
+                              <th style="width:32%">价格</th>
+                              <th style="width:32%">修改后的值</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <foreach name="numiids_arr" item="item_numiid">
+                              <if condition="($saleprop[$item_numiid] eq 'empty')">
+                                   <tr>
+                                        <td>{$detail[$item_numiid]->title}</td>
+                                        <td>{$detail[$item_numiid]->price}</td>
+                                        <td class="show_change"><input type="text" class="mws-textinput" name="item_newprice[]" value=""/>
+                                        </td>
+                                        <input type="hidden" name="item_id[]" value="{$item_numiid}"/>
+                                   </tr>
+                              </if>
+                         </foreach>
+
+                         <foreach name="numiids_arr" item="item_numiid">
+                              <if condition="($saleprop[$item_numiid] eq 'true')">
+                                   <foreach name="skus[$item_numiid]" item="vo" key="k">
+                                        <tr class='<if condition="($k%2 eq 0)">gradeX even<else />gradeX odd</if>'>
+                                             <php>
+                                            
+                                              $properties_name = $vo->properties_name;
+
+                                              $pid_vids = explode (';',$properties_name); 
+
+                                              $out = "<td>";
+
+                                              $pids = "";
+
+                                              $vids = "";
+
+                                              foreach($pid_vids as $key=>$val)
+                                              {
+                                                  $slice = explode (':',$val);
+                                                  $pid = $slice[0];
+                                                  $vid = $slice[1];
+                                                  $pid_name = $slice[2];
+                                                  $vid_name = $slice[3];
+                                                  $out .= $vid_name;
+
+                                                  $pids .= $pid.':'; 
+                                                  $vids .= $vid.':'; 
+                                              }
+                                              $out .= '</td>';
+                                              $out .= '<input type="hidden" name="pids[]" value="'.$pids.'" />';
+                                             $out .= '<input type="hidden" name="vids[]" value="'.$vids.'" />';
+                                              echo $out;
+                                             </php>
+                                               <td>{$vo->price}</td>
+                                              <td class="show_change"><input type="text" class="mws-textinput" name="skus_newprice[]" value=""/>
+                                              </td>
+                                              <input type="hidden" name="skus_id[]" value="{$item_numiid}"/>
+                                        </tr>
+                                   </foreach>
+                              </if>
+                         </foreach>
+
+                         <tr class="set_fixed_price">
+                              <td colspan="3">
+                                   <input type="radio" name="method" id="fixed" checked="checked">
+                                   <label style="display:inline;" for="fixed">新的价格:</label>
+                                   <input type="text" id="setprice"/></td>
+                         </tr>
+                         <tr class="set_expression_price">
+                              <td colspan="3">
+                                   <input type="radio" name="method" id="formula">
+                                   <label style="display:inline;" for="formula">新的公式：</label>
+                                   <select name="price_formula" id="price_formula" disabled="disabled">
+                                        <option value="add">加</option>
+                                        <option value="sub">减</option>
+                                        <option value="mul">成</option>
+                                        <option value="div">除</option>
+                                   </select>
+                                   <input type="text" name="price_value" id="price_value" disabled="disabled"/>
+                                   <select name="jinwei" id="jinwei" disabled="disabled">
+                                        <option value="none"></option>
+                                        <option value="sishe">四舍五入</option>
+                                        <option value="jinwei">进位</option>
+                                        <option value="clear">清零</option>
+                                   </select>
+                              </td>
+                         </tr>
+                    </tbody>
+               </table>
+		</div>
+		<div class="mws-button-row">
+			<input type="button" id="preview" value="预览" class="mws-button black">
+               <input type="submit" value="确认" class="mws-button black">
+		</div>
+     	</form>
+     </div>
+</div>
+
+

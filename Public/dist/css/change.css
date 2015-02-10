@@ -1,0 +1,22 @@
+#red, #green, #blue {
+	float: left;
+	clear: left;
+	width: 300px;
+	margin: 15px;
+}
+
+#swatch {
+	width: 120px;
+	height: 100px;
+	margin-top: 18px;
+	margin-left: 350px;
+	background-image: none;
+	margin-bottom: 20px;
+}
+
+
+#confirm {
+	width: 200px;
+	height: 100px;
+	margin-left: 200px;
+}
